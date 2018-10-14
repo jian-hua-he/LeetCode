@@ -22,4 +22,14 @@ func TestTwoNum(t *testing.T) {
 	if r2[1] != 3 {
 		t.Errorf("Data was incorrect, got %v, want %v", r2[1], 3)
 	}
+
+	t3 := []int{3, 2, 4}
+	r3 := twoSum(t3, 6)
+
+	if r3[0] != 1 {
+		t.Errorf("Data was incorrect, got %v, want %v", r3[0], 1)
+	}
+	if r3[1] != 2 {
+		t.Errorf("Data was incorrect, got %v, want %v", r3[1], 2)
+	}
 }
