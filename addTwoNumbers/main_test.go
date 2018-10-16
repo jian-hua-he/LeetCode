@@ -50,4 +50,8 @@ func TestAddTwoNumbers(t *testing.T) {
 	if r1.Val != 8 {
 		t.Errorf("Data was incorrect, got %v, want %v", r1.Val, 8)
 	}
+
+	if r1.Next != nil {
+		t.Errorf("Data was incorrect, got %v, want %v", r1.Next, nil)
+	}
 }
