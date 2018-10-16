@@ -34,8 +34,10 @@ func toListNode(num int) (result *ListNode, err error) {
 		}
 
 		curr.Val = n
-		curr.Next = new(ListNode)
-		curr = curr.Next
+		if i != 0 {
+			curr.Next = new(ListNode)
+			curr = curr.Next
+		}
 	}
 
 	return result, nil
