@@ -1,6 +1,8 @@
 package main
 
-import "strconv"
+import (
+	"strconv"
+)
 
 type ListNode struct {
 	Val  int
@@ -21,7 +23,7 @@ func toNum(l *ListNode) (result int, err error) {
 	return
 }
 
-func toListNode(num int) (result *ListNode, err error) {
+func numToListNode(num int) (result *ListNode, err error) {
 	str := strconv.Itoa(num)
 	result = new(ListNode)
 
@@ -43,10 +45,26 @@ func toListNode(num int) (result *ListNode, err error) {
 	return result, nil
 }
 
+func arrToListNode(nums []int) *ListNode {
+	result := new(ListNode)
+
+	temp := result
+	for i, n := range nums {
+		temp.Val = n
+
+		if i < len(nums)-1 {
+			temp.Next = new(ListNode)
+			temp = temp.Next
+		}
+	}
+
+	return result
+}
+
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	n1, _ := toNum(l1)
 	n2, _ := toNum(l2)
-	result, _ := toListNode(n1 + n2)
+	result, _ := numToListNode(n1 + n2)
 
 	return result
 }
