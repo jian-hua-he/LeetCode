@@ -73,7 +73,7 @@ func addTwoNumbersBeta(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 	tmp := result
 
-	for t1 != nil && t2 != nil {
+	for t1 != nil || t2 != nil {
 
 		if t1 != nil {
 			tmp.Val += t1.Val
@@ -91,10 +91,22 @@ func addTwoNumbersBeta(l1 *ListNode, l2 *ListNode) *ListNode {
 			tmp.Val -= 10
 		}
 
-		tmp.Next = &ListNode{
-			Val:  nextVal,
-			Next: nil,
+		if nextVal > 0 {
+			tmp.Next = &ListNode{
+				Val:  nextVal,
+				Next: nil,
+			}
+		} else {
+			if t1 == nil && t2 == nil {
+				tmp.Next = nil
+			} else {
+				tmp.Next = &ListNode{
+					Val:  0,
+					Next: nil,
+				}
+			}
 		}
+
 		tmp = tmp.Next
 	}
 
