@@ -99,7 +99,7 @@ func TestAddTwoNumbersCase1(t *testing.T) {
 		},
 	}
 
-	r1 := addTwoNumbers(l1, l2)
+	r1 := addTwoNumbersAlpha(l1, l2)
 	if r1 == nil {
 		t.Errorf("Data was incorrect, got %v, want reference of ListNode", r1)
 		return
