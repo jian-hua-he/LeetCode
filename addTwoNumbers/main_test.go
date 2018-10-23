@@ -203,8 +203,8 @@ func TestAddTwoNumbersCase3(t *testing.T) {
 		t.Errorf("Data was incorrect, got %v, want reference of ListNode", r1)
 		return
 	}
-	if r1.Val != 1 {
-		t.Errorf("Data was incorrect, got %v, want %v", r1.Val, 1)
+	if r1.Val != 0 {
+		t.Errorf("Data was incorrect, got %v, want %v", r1.Val, 0)
 	}
 
 	r1 = r1.Next
