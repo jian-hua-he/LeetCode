@@ -27,6 +27,56 @@ func TestArrToListNode(t *testing.T) {
 	}
 }
 
+func TestListNodeToArr(t *testing.T) {
+	l1 := &ListNode{
+		Val: 2,
+		Next: &ListNode{
+			Val: 4,
+			Next: &ListNode{
+				Val:  3,
+				Next: nil,
+			},
+		},
+	}
+	a1 := listNodeToArr(l1)
+	if len(a1) != 3 {
+		t.Errorf("Data was incorrect, got %v, want %v", len(a1), 3)
+	}
+	if a1[0] != 2 {
+		t.Errorf("Data was incorrect, got %v, want %v", a1[0], 2)
+	}
+	if a1[1] != 4 {
+		t.Errorf("Data was incorrect, got %v, want %v", a1[1], 4)
+	}
+	if a1[2] != 3 {
+		t.Errorf("Data was incorrect, got %v, want %v", a1[0], 3)
+	}
+
+	l2 := &ListNode{
+		Val: 5,
+		Next: &ListNode{
+			Val: 6,
+			Next: &ListNode{
+				Val:  4,
+				Next: nil,
+			},
+		},
+	}
+	a2 := listNodeToArr(l2)
+	if len(a2) != 3 {
+		t.Errorf("Data was incorrect, got %v, want %v", len(a2), 3)
+	}
+	if a2[0] != 5 {
+		t.Errorf("Data was incorrect, got %v, want %v", a2[0], 5)
+	}
+	if a2[1] != 6 {
+		t.Errorf("Data was incorrect, got %v, want %v", a2[1], 6)
+	}
+	if a2[2] != 4 {
+		t.Errorf("Data was incorrect, got %v, want %v", a2[0], 4)
+	}
+}
+
 func TestAddTwoNumbersCase1(t *testing.T) {
 	l1 := &ListNode{
 		Val: 2,
