@@ -61,6 +61,18 @@ func arrToListNode(nums []int) *ListNode {
 	return result
 }
 
+func listNodeToArr(l *ListNode) []int {
+	result := []int{}
+
+	temp := l
+	for temp != nil {
+		result = append(result, temp.Val)
+		temp = temp.Next
+	}
+
+	return result
+}
+
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	n1, _ := toNum(l1)
 	n2, _ := toNum(l2)
