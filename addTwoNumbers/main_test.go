@@ -130,3 +130,60 @@ func TestAddTwoNumbersCase1(t *testing.T) {
 		t.Errorf("Data was incorrect, got %v, want %v", r1.Next, nil)
 	}
 }
+
+func TestAddTwoNumbersCase2(t *testing.T) {
+	// Prepare data
+	t1 := []int{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}
+	l1 := arrToListNode(t1)
+
+	t2 := []int{5, 6, 4}
+	l2 := arrToListNode(t2)
+
+	// Transfer to slice
+	r1 := addTwoNumbersAlpha(l1, l2)
+	if r1 == nil {
+		t.Errorf("Data was incorrect, got %v, want reference of ListNode", r1)
+		return
+	}
+	if r1.Val != 6 {
+		t.Errorf("Data was incorrect, got %v, want %v", r1.Val, 6)
+	}
+
+	r1 = r1.Next
+	if r1 == nil {
+		t.Errorf("Data was incorrect, got %v, want reference of ListNode", r1)
+		return
+	}
+	if r1.Val != 6 {
+		t.Errorf("Data was incorrect, got %v, want %v", r1.Val, 6)
+	}
+
+	r1 = r1.Next
+	if r1 == nil {
+		t.Errorf("Data was incorrect, got %v, want reference of ListNode", r1)
+		return
+	}
+	if r1.Val != 4 {
+		t.Errorf("Data was incorrect, got %v, want %v", r1.Val, 4)
+	}
+
+	for i := 1; i <= 27; i++ {
+		r1 = r1.Next
+		if r1 == nil {
+			t.Errorf("Data was incorrect, got %v, want reference of ListNode", r1)
+			return
+		}
+		if r1.Val != 0 {
+			t.Errorf("Data was incorrect, got %v, want %v", r1.Val, 0)
+		}
+	}
+
+	r1 = r1.Next
+	if r1 == nil {
+		t.Errorf("Data was incorrect, got %v, want reference of ListNode", r1)
+		return
+	}
+	if r1.Val != 1 {
+		t.Errorf("Data was incorrect, got %v, want %v", r1.Val, 1)
+	}
+}
