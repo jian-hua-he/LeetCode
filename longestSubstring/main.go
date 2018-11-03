@@ -3,6 +3,10 @@ package main
 func lengthOfLongestSubstring(s string) int {
 	longest := 0
 
+	if len(s) == 1 {
+		return 1
+	}
+
 	temp := map[string]string{}
 	for _, v := range s {
 		str := string(v)
