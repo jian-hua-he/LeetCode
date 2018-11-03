@@ -22,5 +22,9 @@ func lengthOfLongestSubstring(s string) int {
 		temp[str] = str
 	}
 
+	if len(temp) > longest {
+		longest = len(temp)
+	}
+
 	return longest
 }
