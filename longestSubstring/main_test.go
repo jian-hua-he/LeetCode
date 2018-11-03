@@ -39,4 +39,11 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 	if len5 != expected5 {
 		t.Errorf("Data was incorrect, input \"%v\", got %v, want %v", input5, len5, expected5)
 	}
+
+	input6 := "dvdf"
+	expected6 := 3
+	len6 := lengthOfLongestSubstring(input6)
+	if len6 != expected6 {
+		t.Errorf("Data was incorrect, input \"%v\", got %v, want %v", input6, len6, expected6)
+	}
 }
