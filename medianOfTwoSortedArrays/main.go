@@ -32,8 +32,12 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 		}
 	}
 
-	m := math.Floor(float64(len(nums) / 2))
 	result := 0.0
+	if len(nums) == 0 {
+		return result
+	}
+
+	m := math.Floor(float64(len(nums) / 2))
 	if len(nums)%2 != 0 {
 		result = float64(nums[int(m)])
 	} else {
