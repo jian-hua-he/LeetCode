@@ -47,7 +47,7 @@ func TestCaseThree(t *testing.T) {
 	input1 := []int{1, 1, 2, 5}
 	input2 := []int{3, 4, 10}
 	result := findMedianSortedArrays(input1, input2)
-	expected := 5.0
+	expected := 3.0
 	if result != expected {
 		t.Errorf("Data was incorrect, input1 \"%v\", input2 \"%v\", got %v, want %v", input1, input2, result, expected)
 	}
