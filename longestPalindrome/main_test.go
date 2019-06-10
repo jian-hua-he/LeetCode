@@ -33,3 +33,13 @@ func TestCaseThree(t *testing.T) {
 		t.Errorf("Data was incorrect, input \"%v\", got \"%v\", want \"%v\"", input, result, expected)
 	}
 }
+
+func TestCaseFour(t *testing.T) {
+	input := "a"
+	expected := "a"
+	result := longestPalindrome(input)
+
+	if result != expected {
+		t.Errorf("Data was incorrect, input \"%v\", got \"%v\", want \"%v\"", input, result, expected)
+	}
+}
