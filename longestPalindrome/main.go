@@ -1,28 +1,12 @@
 package main
 
 func longestPalindrome(s string) string {
-	l := len(s)
-
-	for {
-		if l == 0 {
-			break
-		}
-
-		i, j := 0, l-1
-		for {
-			if j >= len(s) {
-				break
-			}
-
+	for l := len(s); l > 0; l -= 1 {
+		for i, j := 0, l-1; j < len(s); i, j = i+1, j+1 {
 			if isPalindrome(s[i:j]) {
 				return s[i:j]
 			}
-
-			i += 1
-			j += 1
 		}
-
-		l -= 1
 	}
 
 	return ""
