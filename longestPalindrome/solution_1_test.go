@@ -6,11 +6,12 @@ import (
 
 func TestCaseOne(t *testing.T) {
 	input := "babad"
-	expected := "bab"
-	result := longestPalindrome(input)
+	expected1 := "bab"
+	expected2 := "aba"
+	result := longestPalindrome2(input)
 
-	if result != expected {
-		t.Errorf("Data was incorrect, input \"%v\", got \"%v\", want \"%v\"", input, result, expected)
+	if result != expected1 && result != expected2 {
+		t.Errorf("Data was incorrect, input \"%v\", got \"%v\", want \"%v\" or \"%v\"", input, result, expected1, expected2)
 	}
 }
 
