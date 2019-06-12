@@ -20,3 +20,7 @@ go-version:
 .PHONY: go-run
 go-run:
 	$(BASE_COMMAND) go run $(DOCKER_VOLUME_PATH)/$(TARGET_FILE)
+
+.PHONY: go-test
+go-test:
+	$(BASE_COMMAND) bash -c "cd $(DOCKER_VOLUME_PATH) && go test ./..."
