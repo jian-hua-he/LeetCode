@@ -1,13 +1,9 @@
-DOCKER_PORT = 80
-HOST_PORT = 6060
+TARGET_FILE ?= playground.go
+DOCKER_IMAGE ?= golang:1.11-rc
 
 FOLDER_NAME = $(shell basename $(CURDIR))
 DOCKER_VOLUME_PATH = /go/src/$(FOLDER_NAME)
-DOCKER_IMAGE = golang:1.11-rc
-
-BASE_COMMAND = docker run -it -v $(PWD):$(DOCKER_VOLUME_PATH) --rm -p $(HOST_PORT):$(DOCKER_PORT) $(DOCKER_IMAGE)
-
-TARGET_FILE ?= playground.go
+BASE_COMMAND = docker run -it -v $(PWD):$(DOCKER_VOLUME_PATH) --rm $(DOCKER_IMAGE)
 
 .PHONY: bash
 bash:
