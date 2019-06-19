@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 func convert1(s string, numRows int) string {
 	if numRows == 1 {
 		return s
@@ -14,19 +10,37 @@ func convert1(s string, numRows int) string {
 		m[i] = ""
 	}
 
-	length := numRows*2 - 2
+	m = recoursiveConvert(s, numRows, m)
+	result := ""
+	for i := 0; i < numRows; i += 1 {
+		result += m[i]
+	}
 
-	for k, v := range s[:numRows] {
+	return result
+}
+
+func recoursiveConvert(s string, nums int, m map[int]string) map[int]string {
+	if s == "" {
+		return m
+	}
+
+	min := nums
+	if len(s) < min {
+		min = len(s)
+	}
+
+	for k, v := range s[:min] {
 		m[k] += string(v)
 	}
 
-	for k, v := range s[numRows:length] {
-		m[numRows-k-2] += string(v)
+	max := nums*2 - 2
+	if len(s) < max {
+		max = len(s)
 	}
 
-	for i := 0; i < numRows; i += 1 {
-		fmt.Println(m[i])
+	for k, v := range s[min:max] {
+		m[nums-k-2] += string(v)
 	}
 
-	return s
+	return recoursiveConvert(s[max:], nums, m)
 }
