@@ -21,3 +21,33 @@ func TestCase2ForConvert1(t *testing.T) {
 		t.Errorf("Data was incorrect, input %v, rows %v got %v, want %v", input, rows, got, want)
 	}
 }
+
+func TestCase3ForConvert1(t *testing.T) {
+	input := "PAYPALISHIRING"
+	rows := 1
+	want := "PAYPALISHIRING"
+	got := convert1(input, rows)
+	if got != want {
+		t.Errorf("Data was incorrect, input %v, rows %v got %v, want %v", input, rows, got, want)
+	}
+}
+
+func TestCase4ForConvert1(t *testing.T) {
+	input := "PAYPALISHIRING"
+	rows := 2
+	want := "PYAIHRNAPLSIIG"
+	got := convert1(input, rows)
+	if got != want {
+		t.Errorf("Data was incorrect, input %v, rows %v got %v, want %v", input, rows, got, want)
+	}
+}
+
+func TestCase5ForConvert1(t *testing.T) {
+	input := "PAYPALISHIRING"
+	rows := 5
+	want := "PHASIYIRPLIGAN"
+	got := convert1(input, rows)
+	if got != want {
+		t.Errorf("Data was incorrect, input %v, rows %v got %v, want %v", input, rows, got, want)
+	}
+}
