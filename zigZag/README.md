@@ -73,8 +73,8 @@ PAYP | AL
 So if the index of the string is less than numbers of the row, than put the string normally. Otherwise put string into `m[numRow - index - 2]`. For example:
 
 string = `AL`, numRow = `4`
-- index = 0, m[4-0-2]=A is equal m[2]=A
-- index = 1, m[4-1-2]=L is equal m[1]=L
+- index = 0, m[4-0-2] = A is equal m[2] = A
+- index = 1, m[4-1-2] = L is equal m[1] = L
 
 ```
 0: P |
