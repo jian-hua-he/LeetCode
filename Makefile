@@ -5,6 +5,14 @@ FOLDER_NAME = $(shell basename $(CURDIR))
 DOCKER_VOLUME_PATH = /go/src/$(FOLDER_NAME)
 BASE_COMMAND = docker run -it -v $(PWD):$(DOCKER_VOLUME_PATH) --rm $(DOCKER_IMAGE)
 
+check-new-folder:
+ifndef NEW_FOLDER
+	$(error Parameter NEW_FOLDER is undefined)
+endif
+
+folder: check-new-folder
+	cp -rf _build $(NEW_FOLDER)
+
 .PHONY: bash
 bash:
 	$(BASE_COMMAND) bash
