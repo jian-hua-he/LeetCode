@@ -6,10 +6,6 @@ import (
 )
 
 func reverse1(x int) int {
-	if x > math.MaxInt32 || x < math.MinInt32 {
-		return 0
-	}
-
 	n := x
 	base := 1
 	if x < 0 {
@@ -43,6 +39,10 @@ func reverse1(x int) int {
 
 	result, _ := strconv.Atoi(rStr)
 	result *= base
+
+	if result > math.MaxInt32 || result < math.MinInt32 {
+		return 0
+	}
 
 	return result
 }
