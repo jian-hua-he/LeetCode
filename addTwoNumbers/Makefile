@@ -1,7 +1,7 @@
-FOLDER_NAME = $(shell basename $(CURDIR))
-DOCKER_VOLUME_PATH = /go/src/$(FOLDER_NAME)
 DOCKER_IMAGE ?= golang:1.11-rc
 
+FOLDER_NAME = $(shell basename $(CURDIR))
+DOCKER_VOLUME_PATH = /go/src/$(FOLDER_NAME)
 BASE_COMMAND = docker run -it -v $(PWD):$(DOCKER_VOLUME_PATH) --rm $(DOCKER_IMAGE)
 
 .PHONY: bash
