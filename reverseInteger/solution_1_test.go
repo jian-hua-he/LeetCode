@@ -49,3 +49,12 @@ func TestCase5ForReverse1(t *testing.T) {
 		t.Errorf("Data was incorrect, input %v, got %v, want %v", input, got, want)
 	}
 }
+
+func TestCase6ForReverse1(t *testing.T) {
+	input := 1534236469
+	want := 0
+	got := reverse1(input)
+	if got != want {
+		t.Errorf("Data was incorrect, input %v, got %v, want %v", input, got, want)
+	}
+}
