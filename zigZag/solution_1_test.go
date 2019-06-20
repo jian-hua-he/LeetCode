@@ -8,7 +8,7 @@ func TestCase1ForConvert1(t *testing.T) {
 	want := "PAHNAPLSIIGYIR"
 	got := convert1(input, rows)
 	if got != want {
-		t.Errorf("Data was incorrect, input %v, rows %v got %v, want %v", input, rows, got, want)
+		t.Errorf("Data was incorrect, input %v, rows %v, got %v, want %v", input, rows, got, want)
 	}
 }
 
@@ -18,7 +18,7 @@ func TestCase2ForConvert1(t *testing.T) {
 	want := "PINALSIGYAHRPI"
 	got := convert1(input, rows)
 	if got != want {
-		t.Errorf("Data was incorrect, input %v, rows %v got %v, want %v", input, rows, got, want)
+		t.Errorf("Data was incorrect, input %v, rows %v, got %v, want %v", input, rows, got, want)
 	}
 }
 
@@ -28,7 +28,7 @@ func TestCase3ForConvert1(t *testing.T) {
 	want := "PAYPALISHIRING"
 	got := convert1(input, rows)
 	if got != want {
-		t.Errorf("Data was incorrect, input %v, rows %v got %v, want %v", input, rows, got, want)
+		t.Errorf("Data was incorrect, input %v, rows %v, got %v, want %v", input, rows, got, want)
 	}
 }
 
@@ -38,7 +38,7 @@ func TestCase4ForConvert1(t *testing.T) {
 	want := "PYAIHRNAPLSIIG"
 	got := convert1(input, rows)
 	if got != want {
-		t.Errorf("Data was incorrect, input %v, rows %v got %v, want %v", input, rows, got, want)
+		t.Errorf("Data was incorrect, input %v, rows %v, got %v, want %v", input, rows, got, want)
 	}
 }
 
@@ -48,6 +48,6 @@ func TestCase5ForConvert1(t *testing.T) {
 	want := "PHASIYIRPLIGAN"
 	got := convert1(input, rows)
 	if got != want {
-		t.Errorf("Data was incorrect, input %v, rows %v got %v, want %v", input, rows, got, want)
+		t.Errorf("Data was incorrect, input %v, rows %v, got %v, want %v", input, rows, got, want)
 	}
 }
