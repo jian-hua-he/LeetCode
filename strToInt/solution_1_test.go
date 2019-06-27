@@ -51,3 +51,13 @@ func TestCase5ForSolution1(t *testing.T) {
 		t.Errorf("Data was incorrect, input \"%v\", got \"%v\", want \"%v\"", input, got, want)
 	}
 }
+
+func TestCase6ForSolution1(t *testing.T) {
+	input := "+1"
+	want := 1
+	got := myAtoi1(input)
+
+	if got != want {
+		t.Errorf("Data was incorrect, input \"%v\", got \"%v\", want \"%v\"", input, got, want)
+	}
+}
