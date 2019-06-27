@@ -8,7 +8,7 @@ import (
 )
 
 func myAtoi1(str string) int {
-	re := regexp.MustCompile(`^\s*\-?\d*`)
+	re := regexp.MustCompile(`^(\s*\+?\-?\d*)`)
 	s := re.FindString(str)
 	s = strings.Trim(s, " ")
 	r, _ := strconv.Atoi(s)
