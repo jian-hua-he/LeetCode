@@ -101,6 +101,7 @@ Loop 1:
 
 ==========
 Expand 1:
+
 faabcbax
 r
 l
@@ -138,6 +139,7 @@ Loop 2:
 
 ==========
 Expand 1:
+
 faabcbax
  r
  l
