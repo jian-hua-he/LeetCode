@@ -19,7 +19,7 @@ Explanation: 342 + 465 = 807.
 The solution is simple: Init a linked for result and give a current pointer for it, then add two pointers in given two linked lists. Sum the values from the value of the parameters and the pointer go to next. If the value is bigger than 10, then catch the 1 for next value and sub 10 for current value.
 
 ```
-Loop1:
+Loop 1:
 
 2 -> 4 -> 3
 5 -> 6 -> 4
@@ -34,7 +34,7 @@ Result: 7
 ```
 
 ```
-Loop2:
+Loop 2:
 
 2 -> 4 -> 3
 5 -> 6 -> 4
@@ -49,7 +49,7 @@ Result: 7 -> 0
 ```
 
 ```
-Loop3:
+Loop 3:
 
 2 -> 4 -> 3
 5 -> 6 -> 4
