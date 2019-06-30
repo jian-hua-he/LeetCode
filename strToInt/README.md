@@ -55,3 +55,13 @@ Input: "-91283472332"
 Output: -2147483648
 Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer. Thefore INT_MIN (−231) is returned.
 ```
+
+## Solution
+
+Use regular expression `^(\s*\+?\-?\d*)` to find the number in the string and trim whitespaces.
+
+`^`: Start with someting
+`\s*`: 0 or many whitespace
+`\+?`: 0 or 1 + sign
+`\-?`: 0 or 1 - sign
+`\d*`: 0 or many numbers
