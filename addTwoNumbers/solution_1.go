@@ -53,7 +53,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	return result
 }
 
-// Helpers
+// Helpers for testing
 func arrToListNode(nums []int) *ListNode {
 	result := new(ListNode)
 
