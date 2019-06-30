@@ -26,7 +26,7 @@ Loop 1:
 i
 j
 
-i + 7 = 7
+i + j = 7
 
 Current Value: 7
 Next Value: 0
@@ -43,7 +43,7 @@ Loop 2:
 
 i + j = 10
 
-Current Value: 0 (i+j bigger than 10. Current value -10 and Next Value +1)
+Current Value: 0 (i+j bigger than 10. Current Value -10 and Next Value +1)
 Next Value: 1
 Result: 7 -> 0
 ```
@@ -56,7 +56,7 @@ Loop 3:
           i
           j
 
-i + j = 7 + 1 (In privious next value is 1) = 8
+i + j = 7 + 1 (In privious Next Value is 1) = 8
 
 Current Value: 8
 Next Value: 0

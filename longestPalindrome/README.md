@@ -39,59 +39,53 @@ Second, We start with the longest length of the given string to find the palindr
 
 ```
 Given String: faabcbax
+```
 
+```
 Current length: 8
 Loop 1:
-Nested Loop 1:
 
+Nested Loop 1:
 faabcbax
 ^      ^
-
 Not matched. Reduce the scope (current length - 1).
+```
 
-==========
-
+```
 Current length: 7
 Loop 2:
-Nested Loop 1:
 
+Nested Loop 1:
 faabcbax
 ^     ^
-
 Not matched. Go to next.
 
 Nested Loop 2:
-
 faabcbax
  ^     ^
-
 Not matched. Reduce the scope (current length - 1).
+```
 
-==========
-
+```
 Current length: 6
 Loop 3:
-Nested Loop 1:
 
+Nested Loop 1:
 faabcbax
 ^    ^
-
 Not matched. Go to next.
 
 Nested Loop 2:
-
 faabcbax
  ^    ^
-
 Not matched. Go to next.
 
+Nested Loop 3:
 faabcbax
   ^    ^
-
 Not matched. Reduce the scope (current length - 1)
 
 // Loop until finding the result...
-
 ```
 
 It is not a good idea. We need a lot of nested loops to find palindrome, which introduces the performance issue.
