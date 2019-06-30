@@ -111,27 +111,26 @@ r == l, so continue expanding
   r
 l
 
-l is out of range. Return the length of the current palindrome.
+l is out of range. Return the positions of the left pointer and the right pointer.
 
-Length 1: 1
-
+Left 1: 0
+Right 1: 0
 ----------
-
 Expand 2:
 
 faabcbax
-r
- l
+ r
+l
 
-r != l, fa is not palindrome. Return 0.
+r != l, Return the positions of the left pointer and the right pointer.
 
-Length 2: 0
+Left 2: 1
+Right 2: 0
 ==========
 
-Current Longest: 1. (Length 1 > Length 2)
-Longest: 1
-Start Index: i - (longest - 1) / 2 = 0 - (1 - 1) / 2 = 0
-End Index: i + longest / 2 = 0 + 1 / 2 = 0.5 = integer 0
+Longest: 1 (Expand 1 > Expand 2)
+Start Index: 0 (Left 1)
+End Index: 0 (Right 1)
 ```
 
 ```
@@ -149,33 +148,33 @@ faabcbax
   r
 l
 
-r != l. Return the length of the current palindrome.
+r != l. Return the positions of the left pointer and the right pointer.
 
-Length 1: 1
-
+Left 1: 1
+Right 1: 1
 ----------
-
 Expand 2:
 
 faabcbax
- r
-  l
+  r
+ l
 
 r == l, so continue expanding.
 
 faabcbax
-r
-   l
+   r
+l
 
-r != l. Return the length of the current palindrome.
+r != l. Return the positions of the left pointer and the right pointer.
 
-Length 2: 2
+Left 1: 1
+Right 1: 2
 ==========
 
-Current Longest: 2 (Length 2 > Length 1)
-Longest: 2 (Current Longest > Longest)
-Start Index: i - (longest - 1) / 2 = 0 - (1 - 1) / 2 = 0
-End Index: i + longest / 2 = 0 + 1 / 2 = 0.5 = integer 0
+Longest: 2 (Expand 2 > Expand 1)
+Because the current longest > previous longest. Change index.
+Start Index: 1 (Left 1)
+End Index: 2 (Right 1)
 
 // And so on...
 ```
