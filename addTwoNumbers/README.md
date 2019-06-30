@@ -1,7 +1,5 @@
 # Add Two Numbers
 
-## Description
-
 You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
@@ -14,7 +12,7 @@ Output: 7 -> 0 -> 8
 Explanation: 342 + 465 = 807.
 ```
 
-# Solution
+## Solution
 
 The solution is simple: Init a linked for result and give a current pointer for it, then add two pointers in given two linked lists. Sum the values from the value of the parameters and the pointer go to next. If the value is bigger than 10, then catch the 1 for next value and sub 10 for current value.
 
