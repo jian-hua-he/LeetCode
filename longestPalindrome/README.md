@@ -96,10 +96,9 @@ This idea comes up from Leetcode. But the description of the idea is not clear f
 Given String: faabcbax
 ```
 
-```
-Loop 1:
+Starting the first loop:
 
-==========
+```
 Expand 1:
 
 faabcbax
@@ -116,7 +115,9 @@ l is out of range. Return the positions of the left pointer and the right pointe
 
 Left 1: 0
 Right 1: 0
-----------
+```
+
+```
 Expand 2:
 
 faabcbax
@@ -127,17 +128,17 @@ r != l, Return the positions of the left pointer and the right pointer.
 
 Left 2: 1
 Right 2: 0
-==========
+```
 
+```
 Longest: 1 (Expand 1 > Expand 2)
 Start Index: 0 (Left 1)
 End Index: 0 (Right 1)
 ```
 
-```
-Loop 2:
+Starting the second loop:
 
-==========
+```
 Expand 1:
 
 faabcbax
@@ -154,7 +155,9 @@ r != l. Return the positions of the left pointer and the right pointer.
 
 Left 1: 1
 Right 1: 1
-----------
+```
+
+```
 Expand 2:
 
 faabcbax
@@ -171,8 +174,9 @@ r != l. Return the positions of the left pointer and the right pointer.
 
 Left 1: 1
 Right 1: 2
-==========
+```
 
+```
 Longest: 2 (Expand 2 > Expand 1)
 Because the current longest > previous longest. Change index.
 Start Index: 1 (Left 1)
