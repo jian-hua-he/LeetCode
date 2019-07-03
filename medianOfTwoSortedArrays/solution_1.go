@@ -21,13 +21,13 @@ func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 		n2 := nums2[j]
 		if n1 <= n2 {
 			nums = append(nums, n1)
-			i++
+			i += 1
 			continue
 		}
 
 		if n2 < n1 {
 			nums = append(nums, n2)
-			j++
+			j += 1
 			continue
 		}
 	}
