@@ -66,7 +66,7 @@ i
    j
 ```
 
-`a` is repeated and the length of temp is bigger than variable longest. Assign the length of temp to variable longest and move `i` to next.
+`a` is repeated and the length of temp is bigger than variable `longest`. Assign the length of temp to variable `longest` and move `i` to next.
 
 ```
 longest = 3
