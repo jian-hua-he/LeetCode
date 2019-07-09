@@ -26,3 +26,34 @@ Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 ```
 
 Coud you solve it without converting the integer to a string?
+
+# Solution
+
+We can convert the integer to an array and add two pointer to iterate the array.
+
+```
+Convert to array
+121 => [1, 2, 1]
+```
+
+```
+[1, 2, 1]
+ i     j
+
+i == j, continue
+```
+
+```
+[1, 2, 1]
+    i
+    j
+
+i == j, continue
+```
+
+```
+[1, 2, 1]
+ j     i
+
+i > j. Break the loop and return true
+```
