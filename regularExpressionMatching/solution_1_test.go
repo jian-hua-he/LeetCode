@@ -9,7 +9,7 @@ func TestCase1IsMatch1(t *testing.T) {
 	want := false
 
 	if got != want {
-		t.Errorf("Data was incorrect, s \"%v\", p \"%v\", got %v, want %v", s, p, got, want)
+		t.Errorf("Data was incorrect, string \"%v\", pattern \"%v\", got %v, want %v", s, p, got, want)
 	}
 }
 
@@ -20,7 +20,7 @@ func TestCase2IsMatch1(t *testing.T) {
 	want := true
 
 	if got != want {
-		t.Errorf("Data was incorrect, s \"%v\", p \"%v\", got %v, want %v", s, p, got, want)
+		t.Errorf("Data was incorrect, string \"%v\", pattern \"%v\", got %v, want %v", s, p, got, want)
 	}
 }
 
@@ -31,7 +31,7 @@ func TestCase3IsMatch1(t *testing.T) {
 	want := true
 
 	if got != want {
-		t.Errorf("Data was incorrect, s \"%v\", p \"%v\", got %v, want %v", s, p, got, want)
+		t.Errorf("Data was incorrect, string \"%v\", pattern \"%v\", got %v, want %v", s, p, got, want)
 	}
 }
 
@@ -42,7 +42,7 @@ func TestCase4IsMatch1(t *testing.T) {
 	want := true
 
 	if got != want {
-		t.Errorf("Data was incorrect, s \"%v\", p \"%v\", got %v, want %v", s, p, got, want)
+		t.Errorf("Data was incorrect, string \"%v\", pattern \"%v\", got %v, want %v", s, p, got, want)
 	}
 }
 
@@ -53,6 +53,6 @@ func TestCase5IsMatch1(t *testing.T) {
 	want := false
 
 	if got != want {
-		t.Errorf("Data was incorrect, s \"%v\", p \"%v\", got %v, want %v", s, p, got, want)
+		t.Errorf("Data was incorrect, string \"%v\", pattern \"%v\", got %v, want %v", s, p, got, want)
 	}
 }
