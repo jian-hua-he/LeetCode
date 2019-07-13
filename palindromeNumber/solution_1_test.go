@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func TestCase1isPalindrome(t *testing.T) {
+func TestCase1IsPalindrome(t *testing.T) {
 	input := 121
 	got := isPalindrome(input)
 	want := true
@@ -12,7 +12,7 @@ func TestCase1isPalindrome(t *testing.T) {
 	}
 }
 
-func TestCase2isPalindrome(t *testing.T) {
+func TestCase2IsPalindrome(t *testing.T) {
 	input := -121
 	got := isPalindrome(input)
 	want := false
@@ -22,7 +22,7 @@ func TestCase2isPalindrome(t *testing.T) {
 	}
 }
 
-func TestCase3isPalindrome(t *testing.T) {
+func TestCase3IsPalindrome(t *testing.T) {
 	input := 10
 	got := isPalindrome(input)
 	want := false
