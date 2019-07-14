@@ -67,3 +67,14 @@ func TestCase6IsMatch1(t *testing.T) {
 		t.Errorf("Data was incorrect, string \"%v\", pattern \"%v\", got %v, want %v", s, p, got, want)
 	}
 }
+
+func TestCase7IsMatch1(t *testing.T) {
+	s := "aaa"
+	p := "a*a"
+	got := isMatch(s, p)
+	want := true
+
+	if got != want {
+		t.Errorf("Data was incorrect, string \"%v\", pattern \"%v\", got %v, want %v", s, p, got, want)
+	}
+}
