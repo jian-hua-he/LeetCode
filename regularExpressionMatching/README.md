@@ -62,3 +62,41 @@ s = "mississippi"
 p = "mis*is*p*."
 Output: false
 ```
+
+# Solution 1
+
+We can breakdown the issue. First, matches string without `*` character. It only needs to check the character is the same as the pattern or the character is equal `.`.
+
+```
+func isMatch(s string, p string) bool {
+    if p == "" {
+        return s == ""
+    }
+
+    firstMatch := s != "" && (s[0] == p[0] || string(p[0]) == ".")
+
+    return firstMatch && isMatch(s[1:], p[1:])
+}
+```
+
+Then handle `*` character. The length of the pattern should bigger than 2. Also, the second character should equal `*`. If the condition is matched then split string and pattern to two-part and continue matching.
+
+The first part is to match `*`. So the first character of the string should match the first character of the pattern. And remove the first character continues the match with `*`. The second part matches the whole without `*` character. So remove the first two character in the pattern and continue matching.
+
+```
+func isMatch(s string, p string) bool {
+    if p == "" {
+        return s == ""
+    }
+
+    firstMatch := s != "" && (s[0] == p[0] || string(p[0]) == ".")
+
+    // firstMatch && isMatch(s[1:], p) continue match with *
+    // isMatch(s, p[2:]) skip * pattern and match again
+    if len(p) >= 2 && string(p[1]) == "*" {
+        return firstMatch && isMatch(s[1:], p) || isMatch(s, p[2:])
+    }
+
+    return firstMatch && isMatch(s[1:], p[1:])
+}
+```
