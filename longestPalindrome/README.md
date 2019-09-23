@@ -172,15 +172,15 @@ l
 
 r != l. Return the positions of the left pointer and the right pointer.
 
-Left 1: 1
-Right 1: 2
+Left 2: 1
+Right 2: 2
 ```
 
 ```
 Longest: 2 (Expand 2 > Expand 1)
 Because the current longest > previous longest. Change index.
-Start Index: 1 (Left 1)
-End Index: 2 (Right 1)
+Start Index: 1 (Left 2)
+End Index: 2 (Right 2)
 
 // And so on...
 ```
