@@ -1,4 +1,4 @@
-DOCKER_IMAGE ?= golang:1.11-rc
+DOCKER_IMAGE ?= golang:1.12
 
 FOLDER_NAME = $(shell basename $(CURDIR))
 DOCKER_VOLUME_PATH = /go/src/$(FOLDER_NAME)
