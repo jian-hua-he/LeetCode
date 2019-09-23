@@ -107,7 +107,7 @@ s: aacba
 p: c*a*cb.
 result: true
 
-If pattern is match string or pattern is '.' then substring the pattern and string.
+If pattern is match string or pattern is "." then match the previous string and pattern.
 
 Example:
 
@@ -117,30 +117,38 @@ p: a.
 
 Base case
 
-+-----+---+
-| s\p |   |
-+-----+---+
-|     | T |
-+-----+---+
++-----+---+---+---+
+| s\p |   | a | . |
++-----+---+---+---+
+|     | T | F | F |
++-----+---+---+---+
+|  a  | F |   |   |
++-----+---+---+---+
+|  a  | F |   |   |
++-----+---+---+---+
 
 Expend case, s[1] == p[1] then match s[0] and p[0]. s[0] == p[0] so is matched.
 
-+-----+-----+-----+
-| s\p |     |  a  |
-+-----+-----+-----+
-|     | (T) |  F  |
-+-----+-----+-----+
-|  a  |  F  | (T) |
-+-----+-----+-----+
++-----+-----+-----+---+
+| s\p |     |  a  | . |
++-----+-----+-----+---+
+|     | (T) |  F  | F |
++-----+-----+-----+---+
+|  a  |  F  | (T) |   |
++-----+-----+-----+---+
+|  a  |  F  |     |   |
++-----+-----+-----+---+
 
-s[1] == p[2] then match s[0] and p[1]. s[0] != p[1] so is not matched.
+s[1] == p[2] or p[2] == "." then match s[0] and p[1]. s[0] != p[1] so is not matched.
 
 +-----+---+-----+-----+
-| s\p |   |  a  |  a  |
+| s\p |   |  a  |  .  |
 +-----+---+-----+-----+
 |     | T | (F) |  F  |
 +-----+---+-----+-----+
 |  a  | F |  T  | (F) |
++-----+---+-----+-----+
+|  a  | F |     |     |
 +-----+---+-----+-----+
 
 s[2] == p[2] then match s[1] and p[1]. s[1] == p[1] so is matched.
@@ -155,28 +163,72 @@ s[2] == p[2] then match s[1] and p[1]. s[1] == p[1] so is matched.
 |  a  | F |  F  | (T) |
 +-----+---+-----+-----+
 
-So we know if s[j] == p[j] or p[j] == '.' then try to match s[i-1] and p[j-1]
+So we know if s[j] == p[j] or p[j] == '.' then try to match s[i-1] and p[j-1].
 ```
 
-Another example
+If pattern is "*" then do zero match first. If zero match is not matched then match the previous string.
+
+Example
 
 ```
-s: aacba
-p: c*a*cb.
+s: xaa
+p: xa*
 
-+-----+---+---+---+---+---+---+---+---+
-| s\p |   | c | * | a | * | c | b | . |
-+-----+---+---+---+---+---+---+---+---+
-|     | T | F | T | F | T | F | F | F |
-+-----+---+---+---+---+---+---+---+---+
-|  a  | F | F | F | T | T | F | F | F |
-+-----+---+---+---+---+---+---+---+---+
-|  a  | F | F | F | F |   |   |   |   |
-+-----+---+---+---+---+---+---+---+---+
-|  c  | F |   |   |   |   |   |   |   |
-+-----+---+---+---+---+---+---+---+---+
-|  b  | F |   |   |   |   |   |   |   |
-+-----+---+---+---+---+---+---+---+---+
-|  a  | F |   |   |   |   |   |   |   |
-+-----+---+---+---+---+---+---+---+---+
+Base case
+
++-----+---+---+---+---+
+| s\p |   | x | a | * |
++-----+---+---+---+---+
+|     | T | F | F | F |
++-----+---+---+---+---+
+|  x  | F |   |   |   |
++-----+---+---+---+---+
+|  a  | F |   |   |   |
++-----+---+---+---+---+
+|  a  | F |   |   |   |
++-----+---+---+---+---+
+
+Expend case. Current index of s is 1. if p[3] == "*" then match p[1] and s[1]. p[1] == s[1] so is matched.
+
++-----+---+-----+---+-----+
+| s\p |   |  x  | a |  *  |
++-----+---+-----+---+-----+
+|     | T |  F  | F |  F  |
++-----+---+-----+---+-----+
+|  x  | F | (T) | F | (T) |
++-----+---+-----+---+-----+
+|  a  | F |     |   |     |
++-----+---+-----+---+-----+
+|  a  | F |     |   |     |
++-----+---+-----+---+-----+
+
+Current index of s is 2. p[3] == "*", match p[1] and s[2]. p[1] and s[2] is not matched. Try to match p[3] and s[1]. p[3] and s[1] is matched. So, p[3] and s[2] is matched.
+
++-----+---+-----+---+-----+
+| s\p |   |  x  | a |  *  |
++-----+---+-----+---+-----+
+|     | T |  F  | F |  F  |
++-----+---+-----+---+-----+
+|  x  | F |  T  | F | (T) |
++-----+---+-----+---+-----+
+|  a  | F | [F] | T | (T) |
++-----+---+-----+---+-----+
+|  a  | F |     |   |     |
++-----+---+-----+---+-----+
+
+Current index of s is 3. p[3] == "*", match p[1] and s[3]. p[1] and s[3] is not matched. Try to match p[3] and s[2]. p[3] and s[2] is matched. So, p[3] and s[3] is matched.
+
++-----+---+-----+---+-----+
+| s\p |   |  x  | a |  *  |
++-----+---+-----+---+-----+
+|     | T |  F  | F |  F  |
++-----+---+-----+---+-----+
+|  x  | F |  T  | F |  T  |
++-----+---+-----+---+-----+
+|  a  | F |  F  | T | (T) |
++-----+---+-----+---+-----+
+|  a  | F | [F] | F | (T) |
++-----+---+-----+---+-----+
+
+We know if p[i] == "*". Match p[i-2] and s[j]. If not matched then match p[i] and s[j-1].
 ```
