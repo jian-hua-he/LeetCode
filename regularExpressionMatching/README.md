@@ -103,19 +103,11 @@ func isMatch(s string, p string) bool {
 
 # Solution 2
 
-s: aacba
-p: c*a*cb.
-result: true
-
-If pattern is match string or pattern is "." then match the previous string and pattern.
-
-Example:
+We can build the solution and try to find the rule in there. For example. `s="aa", p="a."`. We can define the dp array:
 
 ```
-s: aa
-p: a.
-
-Base case
+s: "aa"
+p: "a."
 
 +-----+---+---+---+
 | s\p |   | a | . |
@@ -127,68 +119,80 @@ Base case
 |  a  | F |   |   |
 +-----+---+---+---+
 
-Expend case, s[1] == p[1] then match s[0] and p[0]. s[0] == p[0] so is matched.
-
-+-----+-----+-----+---+
-| s\p |     |  a  | . |
-+-----+-----+-----+---+
-|     | (T) |  F  | F |
-+-----+-----+-----+---+
-|  a  |  F  | (T) |   |
-+-----+-----+-----+---+
-|  a  |  F  |     |   |
-+-----+-----+-----+---+
-
-s[1] == p[2] or p[2] == "." then match s[0] and p[1]. s[0] != p[1] so is not matched.
-
-+-----+---+-----+-----+
-| s\p |   |  a  |  .  |
-+-----+---+-----+-----+
-|     | T | (F) |  F  |
-+-----+---+-----+-----+
-|  a  | F |  T  | (F) |
-+-----+---+-----+-----+
-|  a  | F |     |     |
-+-----+---+-----+-----+
-
-s[2] == p[2] then match s[1] and p[1]. s[1] == p[1] so is matched.
-
-+-----+---+-----+-----+
-| s\p |   |  a  |  .  |
-+-----+---+-----+-----+
-|     | T |  F  |  F  |
-+-----+---+-----+-----+
-|  a  | F | (T) |  F  |
-+-----+---+-----+-----+
-|  a  | F |  F  | (T) |
-+-----+---+-----+-----+
-
-So we know if s[j] == p[j] or p[j] == '.' then try to match s[i-1] and p[j-1].
+- dp[0][0] is `true` because `s=""` and `p=""` are matched.
+- dp[0][1] is `false` because `s=""` and `p="a"` aren’t matched.
+- dp[0][2] is `false` because `s=""` and `p="a."` aren’t matched.
 ```
 
-If pattern is "*" then do zero match first. If zero match is not matched then match the previous string.
-
-Example
+Now, try to extend the case. We can get the dp:
 
 ```
-s: xaa
-p: xa*
+s: "aa"
+p: "a."
 
-Base case
++-----+---+---+---+
+| s\p |   | a | . |
++-----+---+---+---+
+|     | T | F | F |
++-----+---+---+---+
+|  a  | F | T | F |
++-----+---+---+---+
+|  a  | F | F | T |
++-----+---+---+---+
+```
+
+We know if `s[:i]` matched `p[:j]` or `p[j]=="."` then `s[:i-1]` matched `p[:j-1]` (See the parentheses in table).
+
+```
+s: "aa"
+p: "a."
+
++-----+-----+-----+-----+
+| s\p |     |  a  |  .  |
++-----+-----+-----+-----+
+|     | (T) |  F  |  F  |
++-----+-----+-----+-----+
+|  a  |  F  | (T) |  F  |
++-----+-----+-----+-----+
+|  a  |  F  |  F  | (T) |
++-----+-----+-----+-----+
+```
+
+It is easy to understand. If `s="aa"` and `p="a."` are matched. Substring the last character and do match again. In this case would be:
+
+```
+s="aa"  matched  s="a"  matched  s=""
+p="a."  ------>  p="a"  ------>  p=""
+```
+
+We find the first rule: If `s[:i]` and `p[:j]` matched or `p[j]` is `"."` string. `dp[i+1][j+1] = dp[i][j]`.
+
+> Note: Because the dp contain the empty case. `dp[0][0]` means `s=""` and `p=""`. So the if `i` represents index of string. `j` represents index of pattern. The current match of dp would be `dp[i+1][j+1]`.
+
+How about `"*"` character? We can also build the case to find the rule:
+
+```
+s="xaa"
+p="xa*"
 
 +-----+---+---+---+---+
 | s\p |   | x | a | * |
 +-----+---+---+---+---+
 |     | T | F | F | F |
 +-----+---+---+---+---+
-|  x  | F |   |   |   |
+|  x  | F | T | F | T |
 +-----+---+---+---+---+
-|  a  | F |   |   |   |
+|  a  | F | F | T | T |
 +-----+---+---+---+---+
-|  a  | F |   |   |   |
+|  a  | F | F | F | T |
 +-----+---+---+---+---+
+```
 
-Expend case. Current index of s is 1. if p[3] == "*" then match p[1] and s[1]. p[1] == s[1] so is matched.
+The result is `true` in `dp[1][3]`. Which means `s="x"` and `p="xa*"` are matched. So we know if `p[j]="*"`. We can just find the `p[:j-2]` and `s[:i]` are matched or not (See the parentheses in table).
+
+```
+s="xaa"
+p="xa*"
 
 +-----+---+-----+---+-----+
 | s\p |   |  x  | a |  *  |
@@ -197,38 +201,50 @@ Expend case. Current index of s is 1. if p[3] == "*" then match p[1] and s[1]. p
 +-----+---+-----+---+-----+
 |  x  | F | (T) | F | (T) |
 +-----+---+-----+---+-----+
-|  a  | F |     |   |     |
+|  a  | F |  F  | T |  T  |
 +-----+---+-----+---+-----+
-|  a  | F |     |   |     |
+|  a  | F |  F  | F |  T  |
 +-----+---+-----+---+-----+
-
-Current index of s is 2. p[3] == "*", match p[1] and s[2]. p[1] and s[2] is not matched. Try to match p[3] and s[1]. p[3] and s[1] is matched. So, p[3] and s[2] is matched.
-
-+-----+---+-----+---+-----+
-| s\p |   |  x  | a |  *  |
-+-----+---+-----+---+-----+
-|     | T |  F  | F |  F  |
-+-----+---+-----+---+-----+
-|  x  | F |  T  | F | (T) |
-+-----+---+-----+---+-----+
-|  a  | F | [F] | T | (T) |
-+-----+---+-----+---+-----+
-|  a  | F |     |   |     |
-+-----+---+-----+---+-----+
-
-Current index of s is 3. p[3] == "*", match p[1] and s[3]. p[1] and s[3] is not matched. Try to match p[3] and s[2]. p[3] and s[2] is matched. So, p[3] and s[3] is matched.
-
-+-----+---+-----+---+-----+
-| s\p |   |  x  | a |  *  |
-+-----+---+-----+---+-----+
-|     | T |  F  | F |  F  |
-+-----+---+-----+---+-----+
-|  x  | F |  T  | F |  T  |
-+-----+---+-----+---+-----+
-|  a  | F |  F  | T | (T) |
-+-----+---+-----+---+-----+
-|  a  | F | [F] | F | (T) |
-+-----+---+-----+---+-----+
-
-We know if p[i] == "*". Match p[i-2] and s[j]. If not matched then match p[i] and s[j-1].
 ```
+
+What if this is not a case? If `p[:j-2]` and `s[:i]` are not matched. We should consider the string is one or more match. So we need to check the string and the pattern are equal (See the curly brackets in the table).
+
+```
+s="xaa"
+p="xa*"
+
++-----+---+---+-----+---+
+| s\p |   | x | [a] | * |
++-----+---+---+-----+---+
+|     | T | F |  F  | F |
++-----+---+---+-----+---+
+|  x  | F | T |  F  | T |
++-----+---+---+-----+---+
+| [a] | F | F |  T  | T |
++-----+---+---+-----+---+
+|  a  | F | F |  F  | T |
++-----+---+---+-----+---+
+```
+
+If `s[i]` equal `p[j]`. We can check `s[i-1]` and `p[j]` are matched. In this case. `i=1` and `j=2`. Check `s="xa"` and `p="xa*"` are matched (See the parentheses in table).
+
+```
+s="xaa"
+p="xa*"
+
++-----+---+---+---+-----+
+| s\p |   | x | a |  *  |
++-----+---+---+---+-----+
+|     | T | F | F |  F  |
++-----+---+---+---+-----+
+|  x  | F | T | F | (T) |
++-----+---+---+---+-----+
+|  a  | F | F | T | (T) |
++-----+---+---+---+-----+
+|  a  | F | F | F |  T  |
++-----+---+---+---+-----+
+```
+
+So we find the second rule. If `p[j]="*"` then check the zero match first. If the result is `false` then check one ore more match.
+
+The third rule. If all of the above is not true. Then `s` and `p` are not matched.
