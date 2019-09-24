@@ -141,7 +141,7 @@ p: "a."
 +-----+---+---+---+
 ```
 
-We know if `s[:i]` matched `p[:j]` or `p[j]=="."` then `s[:i-1]` matched `p[:j-1]` (See the parentheses in table).
+We know if `s[:i]` and `p[:j]` are matched or `p[j]=="."` then get the matched result from `s[:i-1]` and `p[:j-1]` (See the parentheses in table).
 
 ```
 s: "aa"
@@ -158,14 +158,14 @@ p: "a."
 +-----+-----+-----+-----+
 ```
 
-It is easy to understand. If `s="aa"` and `p="a."` are matched. Substring the last character and do match again. In this case would be:
+It is easy to understand. If `s="aa"` and `p="a."` are matched. Substring the last character and match again. In this case would be:
 
 ```
-s="aa"  matched  s="a"  matched  s=""
+s="aa"  matched  s="a"  matched  s=""  matched
 p="a."  ------>  p="a"  ------>  p=""
 ```
 
-We find the first rule: If `s[:i]` and `p[:j]` matched or `p[j]` is `"."` string. `dp[i+1][j+1] = dp[i][j]`.
+We find the first rule: If `s[:i]` and `p[:j]` are matched or `p[j]` equal `"."` string. `dp[i+1][j+1] = dp[i][j]`.
 
 > Note: Because the dp contain the empty case. `dp[0][0]` means `s=""` and `p=""`. So the if `i` represents index of string. `j` represents index of pattern. The current match of dp would be `dp[i+1][j+1]`.
 
