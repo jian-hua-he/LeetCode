@@ -46,7 +46,7 @@ func isMatch2(s string, p string) bool {
 			// If p[j-1] == s[i], get result from dp[i][j+1]
 			if string(p[j]) == "*" {
 				if dp[i+1][j-1] == true {
-					dp[i+1][j-1] = true
+					dp[i+1][j+1] = true
 					continue
 				}
 
