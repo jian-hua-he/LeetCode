@@ -48,9 +48,9 @@ func TestCase4IsMatch1(t *testing.T) {
 
 func TestCase5IsMatch1(t *testing.T) {
 	s := "mississippi"
-	p := "mis*is*p*."
+	p := "mis*is*ip*."
 	got := isMatch(s, p)
-	want := false
+	want := true
 
 	if got != want {
 		t.Errorf("Data was incorrect, string \"%v\", pattern \"%v\", got %v, want %v", s, p, got, want)
